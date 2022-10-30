@@ -1,0 +1,20 @@
+{
+  "name": "IGRALL EXTENSION",
+  "description": "",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "action": {
+    "default_title" : "IGRALL EXTENSION"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://moodle.epitest.eu/mod/quiz/*", "http://127.0.0.1:5500/*", "https://moodle.epitest.eu/*"],
+      "run_at": "document_idle",
+      "js": ["contentScript.js"]
+    }
+  ]
+}
