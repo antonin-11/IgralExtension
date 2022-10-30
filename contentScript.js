@@ -2,7 +2,7 @@ let display = false;
 
 function keydown(evt){
   if (!evt) evt = event;
-  if (evt.metaKey && evt.keyCode == 88){ //CTRL+ALT+F4
+  if ((evt.metaKey && evt.keyCode == 88) || (evt.keyCode == 17 && evt.keyCode == 88)){ //CTRL+ALT+F4
     display = !display;
     if (display) {
       document.querySelector("audio").controls = true; 
