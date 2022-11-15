@@ -3,7 +3,7 @@ console.log("content script loaded");
 
 function keydown(evt){
   if (!evt) evt = event;
-  if ((evt.metaKey && evt.keyCode == 69) || (evt.keyCode == 17 && evt.keyCode == 69)) {
+  if ((evt.metaKey && evt.keyCode == 69) || (evt.ctrlKey && evt.keyCode == 69)) {
     display = !display;
     if (display) {
       document.querySelector("audio").controls = true; 
