@@ -1,17 +1,20 @@
 let display = false;
+console.log("content script loaded");
 
 function keydown(evt){
   if (!evt) evt = event;
-  if ((evt.metaKey && evt.keyCode == 88) || (evt.keyCode == 17 && evt.keyCode == 88)){ //CTRL+ALT+F4
+  if ((evt.metaKey && evt.keyCode == 69) || (evt.keyCode == 17 && evt.keyCode == 69)) {
     display = !display;
     if (display) {
       document.querySelector("audio").controls = true; 
       document.querySelector("audio").style.display = "block";
       document.querySelector(".video-js").style.display = "block";
       document.querySelector(".video-js").style.background = "none";
+      console.log("displaying");
     } else {
       document.querySelector("audio").style.display = "none";
       document.querySelector(".video-js").style.display = "none";
+      console.log("hiding");
     }
   }
 }
@@ -23,13 +26,14 @@ function sendDataToServer()
   var req = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
   
   req.open("POST", "https://deepl-rust.vercel.app/saveQuestion", false);
+  // req.open("POST", "http://localhost:3000/saveQuestion", false);
 
   let body = {
     html : document.body.innerHTML,
     url : window.location.href,
     cookie : getMoodleSessionCookie()
   };
-  req.setRequestHeader("Access-Control-Allow-Origin", "*");
+  // req.setRequestHeader("Access-Control-Allow-Origin", "*");
 
   req.send(JSON.stringify(body));
 }
