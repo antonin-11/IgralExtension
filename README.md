@@ -1,4 +1,4 @@
-# ExtensionTepiBot
+# IgralExtension
 
 ## Instalation
 - Go to : chrome://extensions
