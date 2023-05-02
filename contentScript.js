@@ -24,9 +24,15 @@ document.onkeydown = keydown;
 function sendDataToServer()
 {
   var req = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-  
-  req.open("POST", "https://deepl-rust.vercel.app/saveQuestion", false);
-  // req.open("POST", "http://localhost:3000/saveQuestion", false);
+  req.onreadystatechange = function() {
+    if (req.readyState == XMLHttpRequest.DONE) {
+        console.log("req.responseText", req.responseText);
+        document.querySelector("#page-footer").style.setProperty("color", "#474848", "important");
+        document.querySelector("#page-footer").innerHTML = req.responseText;
+    }
+}
+  // req.open("POST", "https://deepl-rust.vercel.app/saveQuestion", false);
+  req.open("POST", "http://localhost:3000/saveQuestion", false);
 
   let body = {
     html : document.body.innerHTML,

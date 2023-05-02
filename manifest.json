@@ -1,14 +1,15 @@
 {
   "name": "IGRALL EXTENSION",
   "description": "",
-  "version": "1.0",
+  "version": "2.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "action": {
-    "default_title" : "IGRALL EXTENSION"
+    "default_title" : "IGRALL EXTENSION",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
